@@ -1,1 +1,6 @@
- nehatharani.gitub.io
+# nehatharani.gitub.io
+
+Resume: 
+
+Steps to update:
+
