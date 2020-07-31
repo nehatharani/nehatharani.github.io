@@ -1,6 +1,6 @@
-# nehatharani.gitub.io
+Author: Neha Tharani
 
-Resume: 
+Date: July 31, 2020
 
-Steps to update:
-
+Preview: 
+![preview](img/Preview.png)
