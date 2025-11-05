@@ -644,7 +644,7 @@
         <div class="container">
             <div class="contact-content">
                 <h2 class="section-title fade-in">Let's Connect</h2>
-                <form class="contact-form fade-in" action="https://formcarry.com/s/UNoDr_uLieU" method="POST" enctype="multipart/form-data">
+                <form id = "contact-form" class="contact-form fade-in" action="https://formcarry.com/s/UNoDr_uLieU" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -1153,6 +1153,26 @@ window.addEventListener('beforeunload', () => {
   window.scrollTo(0, 0);
 });
 </script>
-
+<script src="https://carrier.formcarry.com/js/v1.js"></script>
+<script>
+  formcarry({
+    // replace this "you-form-id-in-formcarry" with your form id that you can get it from the dashboard.
+    form: "UNoDr_uLieU",
+    // id or class name of the form element, only form element allowed
+    // works with css selectors
+    // # <= for id
+    // . <= for class
+    element: "#contact-form",
+    // Success callback, you can show alert messages
+    // or redirect the user in this function
+    onSuccess: function(response){
+      alert(response)
+    },
+    // Error callback, a good place to show errors 🗿
+    onError: function(error){
+      alert(error)
+    }
+  });
+</script>
 </body>
 </html>
