@@ -664,6 +664,12 @@
                         <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Send Message</button>
+                    <p id="form-success" style="display:none; color:white; margin-top:1rem;">
+                      Thanks! Your message has been sent successfully.
+                    </p>
+                    <p id="form-error" style="display:none; color:white; margin-top:1rem;">
+                      Oops, something went wrong. Please try again or email me directly.
+                    </p>
                 </form>
             </div>
         </div>
@@ -1154,25 +1160,40 @@ window.addEventListener('beforeunload', () => {
 });
 </script>
 <script src="https://carrier.formcarry.com/js/v1.js"></script>
+<!-- Formcarry script -->
+
 <script>
-  formcarry({
-    // replace this "you-form-id-in-formcarry" with your form id that you can get it from the dashboard.
-    form: "UNoDr_uLieU",
-    // id or class name of the form element, only form element allowed
-    // works with css selectors
-    // # <= for id
-    // . <= for class
-    element: "#contact-form",
-    // Success callback, you can show alert messages
-    // or redirect the user in this function
-    onSuccess: function(response){
-      alert(response)
-    },
-    // Error callback, a good place to show errors 🗿
-    onError: function(error){
-      alert(error)
-    }
+  document.addEventListener("DOMContentLoaded", () => {
+    const successEl = document.getElementById("form-success");
+    const errorEl = document.getElementById("form-error");
+
+    formcarry({
+      form: "UNoDr_uLieU",        
+      element: "#contact-form",    
+      onSuccess: function (response) {
+        successEl.style.display = "block";
+        errorEl.style.display = "none";
+        // optionally reset form
+        document.querySelector("#contact-form").reset();
+
+        // hide after 5 seconds
+        setTimeout(() => {
+          successEl.style.display = "none";
+        }, 5000);
+      },
+      onError: function (error) {
+        successEl.style.display = "none";
+        errorEl.style.display = "block";
+
+        console.error("Formcarry Error:", error);
+        // hide after 5 seconds too
+        setTimeout(() => {
+          errorEl.style.display = "none";
+        }, 5000);
+      },
+    });
   });
 </script>
+
 </body>
 </html>
